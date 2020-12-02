@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Order } from './../../_shared/models/order.model';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,19 +24,9 @@ export class OrderService {
     return response;
   }
 
-  createOrder(order: Order): any {
-    const orderTest = {
-      senderEmail: 'juvia@ft.com',
-      senderName: 'Juvia Lockser',
-      recipientEmail: 'gray@ft.com',
-      recipientName: 'Gray Fullbuster',
-      voucher: '500 Voucher',
-      dedication: 'From Juvia with Love',
-      orderDate: undefined
-    };
-
+  createOrder(order: any): any {
     const url = this.baseUrl + '/create_order';
 
-    return this.http.post(url, orderTest).toPromise().then((data: any) => { console.log(data); });
+    return this.http.post(url, order).toPromise().then((data: any) => { console.log(data); });
   }
 }

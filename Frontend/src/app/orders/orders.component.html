@@ -1,4 +1,31 @@
-<input [(ngModel)]="emailSearchText" type="email">
-<button (click)="getOrders()">Get Orders</button>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <input class="form-control col-6" type="email" placeholder="Search" aria-label="Search" [(ngModel)]="emailSearchText">
+    <button (click)="getOrders()" class="btn btn-primary col-2 ml-2">Get Orders</button>
+  </div>
+</div>
 
-<p *ngFor="let order of orders">{{ order.senderName }} {{ order.senderEmail }}</p>
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Sender Email</th>
+      <th scope="col">Sender Name</th>
+      <th scope="col">Recipient Email</th>
+      <th scope="col">Recipient Name</th>
+      <th scope="col">Voucher</th>
+      <th scope="col">Dedication</th>
+      <th scope="col">Order Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.senderEmail }}</td>
+      <td>{{ order.senderName }}</td>
+      <td>{{ order.recipientEmail }}</td>
+      <td>{{ order.recipientName }}</td>
+      <td>{{ order.voucher }}</td>
+      <td>{{ order.dedication }}</td>
+      <td>{{ order.orderDate | date:'longDate' }}</td>
+    </tr>
+  </tbody>
+</table>
