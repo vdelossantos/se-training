@@ -1,0 +1,4 @@
+<input [(ngModel)]="emailSearchText" type="email">
+<button (click)="getOrders()">Get Orders</button>
+
+<p *ngFor="let order of orders">{{ order.senderName }} {{ order.senderEmail }}</p>

@@ -15,7 +15,5 @@
         public string Voucher { get; set; }
 
         public string Dedication { get; set; }
-
-        public DateTime OrderDate { get; set; }
     }
 }

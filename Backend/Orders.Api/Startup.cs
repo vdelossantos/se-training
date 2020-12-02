@@ -23,7 +23,7 @@ namespace Orders.Api
             services.InjectInfrastructure(this.Configuration);
             services.InjectOrderService(this.Configuration);
 
-            // services.AddApplicationInsightsTelemetry();
+            services.AddApplicationInsightsTelemetry(this.Configuration.GetSection("ApplicationInsights")["InstrumentationKey"]);
             services.AddControllers();
         }
 
@@ -49,6 +49,7 @@ namespace Orders.Api
             app.UseRouting();
 
             app.UseCors(x => x
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 

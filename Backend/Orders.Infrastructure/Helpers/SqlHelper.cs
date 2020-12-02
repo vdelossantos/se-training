@@ -27,6 +27,9 @@
                     {
                         command.Connection = connection;
                         command.Transaction = transaction;
+
+                        await command.ExecuteNonQueryAsync();
+                        transaction.Commit();
                     }
                     catch (DbException ex)
                     {
