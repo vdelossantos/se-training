@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   readonly baseUrl = 'https://localhost:5001/api';
+  finishedLoading = false;
 
   constructor(private http: HttpClient) { }
 
@@ -17,16 +19,15 @@ export class OrderService {
     return response;
   }
 
-  getOrdersBySender(senderEmail: string): Observable<any> {
+  getOrdersBySender(senderEmail: string): any {
     const url = this.baseUrl + '/orders/' + senderEmail;
-    const response = this.http.get(url);
-
-    return response;
+    return this.http.get(url);
   }
 
-  createOrder(order: any): any {
+  async createOrder(order: any): Promise<any> {
     const url = this.baseUrl + '/create_order';
 
-    return this.http.post(url, order).toPromise().then((data: any) => { console.log(data); });
+    // return this.http.post(url, order).toPromise().then((data: any) => { console.log(data); });
+    return await this.http.post(url, order).toPromise();
   }
 }

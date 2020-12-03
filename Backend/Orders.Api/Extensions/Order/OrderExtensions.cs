@@ -60,7 +60,7 @@
                 RecipientName = model.RecipientName,
                 Voucher = model.Voucher,
                 Dedication = model.Dedication,
-                OrderDate = model.OrderDate.GetValueOrDefault()
+                OrderDate = model.OrderDate
             };
         }
 

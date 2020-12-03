@@ -10,5 +10,7 @@ AS
 		OrderDate
 	FROM
 		[dbo].[Orders]
+	ORDER BY
+		OrderDate DESC
 
 RETURN 0

@@ -38,7 +38,8 @@
                 RecipientEmail = entity.RecipientEmail,
                 RecipientName = entity.RecipientName,
                 Voucher = entity.Voucher,
-                Dedication = entity.Dedication
+                Dedication = entity.Dedication,
+                OrderDate = entity.OrderDate
             };
 
             return result;

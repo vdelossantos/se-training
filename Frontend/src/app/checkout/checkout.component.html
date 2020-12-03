@@ -4,33 +4,43 @@
   </div>
 </div>
 
-<div class="container-fluid mt-3">
-  <form #checkoutForm="ngForm">
-    <div class="form-group">
-      <label for="">Sender Name: </label>
-      <input type="text" #senderName_="ngModel" [class.is-invalid]="senderName_.invalid && senderName_.touched" required name="senderName" [(ngModel)]="senderName" class="form-control">
-    </div>
+<form #checkoutForm="ngForm" (ngSubmit)="createOrder(checkoutForm.valid)">
+  <div class="form-group">
+    <label for="senderEmail">Sender Email: </label>
+    <input required id="senderEmail" name="senderEmail" 
+      [(ngModel)]="senderEmail" type="text" class="form-control"
+      #senderEmailControl="ngModel" [class.is-invalid]="senderEmailControl.invalid && senderEmailControl.touched"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+  </div>
 
-    <div class="form-group">
-      <label for="">Sender Email: </label>
-      <input type="email" #senderEmail_="ngModel" [class.is-invalid]="senderEmail_.invalid && senderEmail_.touched" required name="senderEmail" [(ngModel)]="senderEmail" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="senderName">Sender Name: </label>
+    <input required id="senderName" name="senderName"
+      [(ngModel)]="senderName" type="email" class="form-control"
+      #senderNameControl="ngModel" [class.is-invalid]="senderNameControl.invalid && senderNameControl.touched">
+  </div>
 
-    <div class="form-group">
-      <label for="">Recipient Name: </label>
-      <input type="text" #recipientName_="ngModel" [class.is-invalid]="recipientName_.invalid && recipientName_.touched" required name="recipientName" [(ngModel)]="recipientName" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="recipientEmail">Recipient Email: </label>
+    <input required id="recipientEmail" name="recipientEmail" 
+      [(ngModel)]="recipientEmail" type="text" class="form-control"
+      #recipientEmailControl="ngModel" [class.is-invalid]="recipientEmailControl.invalid && recipientEmailControl.touched"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+  </div>
 
-    <div class="form-group">
-      <label for="">Recipient Email: </label>
-      <input type="email" #recipientEmail_="ngModel" [class.is-invalid]="recipientEmail_.invalid && recipientEmail_.touched" required name="recipientEmail" [(ngModel)]="recipientEmail" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="recipientName">Recipient Name: </label>
+    <input required id="recipientName" name="recipientName" 
+      [(ngModel)]="recipientName" type="email" class="form-control"
+      #recipientNameControl="ngModel" [class.is-invalid]="recipientNameControl.invalid && recipientNameControl.touched">
+  </div>
 
-    <div class="form-group">
-      <label for="">Dedication: </label>
-      <textarea #dedication_="ngModel" [class.is-invalid]="dedication_.invalid && dedication_.touched" name="dedication" rows="10" cols="70" [(ngModel)]="dedication" class="form-control"></textarea>
-    </div>
+  <div class="form-group">
+    <label for="dedication">Dedication: </label>
+    <textarea id="dedication" name="dedication" 
+      [(ngModel)]="dedication" type="email" class="form-control"
+      #dedicationControl="ngModel"></textarea>
+  </div>
 
-    <button class="btn btn-primary" type="submit" (click)="createOrder()">Create Order</button>
-  </form>
-</div>
+  <button class="btn btn-primary" type="submit">Checkout</button>
+</form>

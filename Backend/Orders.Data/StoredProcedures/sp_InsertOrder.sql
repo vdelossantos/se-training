@@ -9,5 +9,5 @@ AS
 	INSERT INTO
 		[dbo].[Orders]
 	VALUES
-		(@SenderEmail, @SenderName, @RecipientEmail, @RecipientName, @Voucher, @Dedication, DEFAULT)
+		(@SenderEmail, @SenderName, @RecipientEmail, @RecipientName, @Voucher, @Dedication, GETDATE())
 RETURN 0

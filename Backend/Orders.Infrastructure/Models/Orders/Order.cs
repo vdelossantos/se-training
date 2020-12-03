@@ -28,6 +28,6 @@
 #nullable disable
 
         [DataMember]
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }

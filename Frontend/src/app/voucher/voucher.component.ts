@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-voucher',
@@ -10,7 +11,7 @@ export class VoucherComponent implements OnInit {
   @Input() voucherId: string;
   @Input() voucher: string;
 
-  constructor(private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute, private toastr: ToastrService) {
     this.voucher = '';
     this.voucherId = '';
   }

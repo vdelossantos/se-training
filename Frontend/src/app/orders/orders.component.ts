@@ -1,3 +1,4 @@
+import { finalize } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 
 import { OrderService } from './../core/services/index';
@@ -10,6 +11,7 @@ import { OrderService } from './../core/services/index';
 export class OrdersComponent implements OnInit {
   emailSearchText: string;
   orders: any;
+  finishedLoading = true;
 
   constructor(private orderService: OrderService) {
     this.orders = [];
@@ -20,8 +22,16 @@ export class OrdersComponent implements OnInit {
     this.orders = [];
   }
 
-  getOrders(): void {
-    this.orderService.getOrdersBySender(this.emailSearchText).subscribe((response: any) => {
+  getOrders(): any {
+    this.finishedLoading = false;
+
+    this.orderService.getOrdersBySender(this.emailSearchText).pipe(
+      finalize(() => {
+        setTimeout(() => {
+          this.finishedLoading = true;
+        });
+      })
+    ).subscribe((response: any) => {
       this.orders = response.data;
     });
   }

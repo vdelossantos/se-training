@@ -13,5 +13,7 @@ AS
 		[dbo].[Orders]
 	WHERE
 		SenderEmail = @SenderEmail
+	ORDER BY
+		OrderDate DESC
 
 RETURN 0

@@ -7,6 +7,7 @@ import { VouchersComponent } from './vouchers/vouchers.component';
 
 const routes: Routes = [
   { path: '', component: VouchersComponent },
+  { path: 'vouchers/:submitStatus', component: VouchersComponent },
   { path: 'checkout/:voucherName', component: CheckoutComponent },
   { path: 'orders', component: OrdersComponent }
 ];
